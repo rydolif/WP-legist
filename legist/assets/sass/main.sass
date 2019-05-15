@@ -1,6 +1,39 @@
 @import "libs"
 @import "base"
 
+
+
+.pagination
+	display: flex
+	justify-content: center
+	align-items: center
+	width: 100%
+	margin-top: 30px
+
+	a,
+	span
+		font-size: 20px
+		font-weight: 800
+		display: block
+		width: 30px
+		height: 30px
+		border-radius: 50%
+		background-color: transparent
+		border: 1px solid $text
+		text-align: center
+		margin: 0 5px
+		color: $accent
+		transition: all .6s
+
+	a
+		&:hover,
+		&:focus
+			background: $accent
+			border: 1px solid $accent
+			color: #fff
+
+
+
 .top-line
 	background-color: #fff
 	&__container
@@ -325,6 +358,7 @@
 	padding: 100px 0 125px
 	background-color: #F6F6F6
 	overflow: visible
+
 	&__container
 		position: relative
 
@@ -358,9 +392,8 @@
 			font-size: 14px
 			font-family: $os
 			line-height: 1.7
-			
 
-		button
+		a
 			background: none
 			border: none
 			font-size: 24px

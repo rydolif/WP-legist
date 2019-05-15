@@ -3,7 +3,7 @@
 
 	<?php get_template_part( 'parts/top-line' ); ?>
 
-	<?php get_template_part( 'parts/header' ); ?>
+	<?php get_template_part( 'parts/header-page' ); ?>
 
 
 	<main class="article_2">

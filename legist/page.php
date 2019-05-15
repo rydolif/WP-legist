@@ -28,67 +28,39 @@
 			<div class="container">
 				
 				<div class="services__list">
-					
-					<div class="services__item">
-						<span>01.</span>
-						<h4>Уголовные дела</h4>
-						<p>(ст.159, 290, 291, 228, 228.1 УК <br> РФ)</p>
-						<a href="service_1.html" target="_blank" class="services__btn">Подробнее</a>
-					</div>
 
-					<div class="services__item"></div>
+					<?php if( have_rows('list') ): ?>
 
-					<div class="services__item services__title">
-						<h2>Услуги</h2>
-					</div>
+						<?php while( have_rows('list') ): the_row(); 
 
-					<div class="services__item"></div>
+							$title = get_sub_field('title');
+							$text = get_sub_field('text');
+							$number = get_sub_field('number');
+							$link = get_sub_field('link');
+							$class = get_sub_field('class');
 
-					<div class="services__item">
-						<span>02.</span>
-						<h4>Арбитраж</h4>
-						<p>(В том числе, споры с <br> Агенством по страхованию <br> вкладов)</p>
-						<a href="service_1.html" target="_blank" class="services__btn">Подробнее</a>
-					</div>
+							?>
 
-					<div class="services__item">
-						<span>03.</span>
-						<h4>Договорная работа</h4>
-						<p>(В том числе составление брачных контрактов)</p>
-						<a href="service_1.html" target="_blank" class="services__btn">Подробнее</a>
-					</div>
+							
+								<?php if( $class ): ?>
+									<div class="services__item services__title">
+										<h2><?php echo $class; ?></h2>
+									</div>
+								<?php else: ?>
+									<div class="services__item">
+										<?php if( $link ): ?>
+											<span><?php echo $number; ?></span>
+											<h4><?php echo $title; ?></h4>
+											<p><?php echo $text; ?></p>
+											<a href="<?php echo $link; ?>" class="services__btn">Подробнее</a>
+										<?php endif; ?>
 
-					<div class="services__item">
-						<span>04.</span>
-						<h4>Семейные споры</h4>
-						<a href="service_1.html" target="_blank" class="services__btn">Подробнее</a>
-					</div>
+									</div>
+								<?php endif; ?>
 
-					<div class="services__item">
-						<span>05.</span>
-						<h4>Жилищные споры</h4>
-						<a href="service_1.html" target="_blank" class="services__btn">Подробнее</a>
-					</div>
+						<?php endwhile; ?>
 
-					<div class="services__item">
-						<span>06.</span>
-						<h4>Споры в <br> сфере закупок</h4>
-						<a href="service_1.html" target="_blank" class="services__btn">Подробнее</a>
-					</div>
-
-					<div class="services__item"></div>
-
-					<div class="services__item">
-						<span>07.</span>
-						<h4>Защита прав <br> потребителей</h4>
-						<a href="service_1.html" target="_blank" class="services__btn">Подробнее</a>
-					</div>
-
-					<div class="services__item">
-						<span>08.</span>
-						<h4>Юридическое <br> абоненское <br> обслуживание</h4>
-						<a href="service_1.html" target="_blank" class="services__btn">Подробнее</a>
-					</div>
+					<?php endif; ?>
 
 				</div>
 
@@ -103,8 +75,7 @@
 				</div>
 
 				<div class="about__info">
-					<p>Адвокат по гражданским делам <span><b>Тюрина Дина Игоревна</b></span> является <br> членом Московской коллегии адвокатов "Верус". <br><span>Регистрационных номер 77/10823 </span>в реестре Адвокатской палаты города</p>
-					<p>Юридические консультации по правовым вопросам, предоставление юридический услуг , связанных с защитой интересов граждан и юридических лиц в органах государственой власти, органах местного самоуправления, общественных обьединениях и иных организвциях, а также арбитражных судах и судах общей юрисдикции.</p>
+					<?php the_field('content'); ?>
 				</div>
 
 			</div>
@@ -118,11 +89,14 @@
 
 					<p>Здесь собраны ответы на <br> самые популярные вопросы. Если <br> Вы не нашли ответ на <br> интересующий Вас вопрос - <br>Воспользуйтесь формой</p>
 
-					<button class="question_open">Задать вопрос</button>
+					<div class="click">
+						<a href="#question">Задать вопрос</a>
+					</div>
 				</div>
 
 				<div class="answers__list">
-					
+
+
 					<div class="answers__item">
 						<h5>Елена Иванова, 24/09/2019</h5>
 
@@ -137,7 +111,7 @@
 
 					</div>
 
-					<div class="answers__item">
+<!-- 					<div class="answers__item">
 						<h5>Елена Иванова, 24/09/2019</h5>
 
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut natus deleniti non dolore excepturi animi porro quam, vitae eos tenetur. Ut natus deleniti non dolore excepturi animi porro quam, vitae eos tenetur?</p>
@@ -194,19 +168,24 @@
 					</div>
 
 					<button class="answers__more_open">Больше вопросов</button>
-					<button class="answers__more_close">Свернуть</button>
+					<button class="answers__more_close">Свернуть</button> -->
 
 				</div>
 
 			</div>
 		</section>
 
-		<section class="question">
+		<section class="question" id="question">
 			<div class="container">
 				
 				<h2>Задать вопрос <span>адвокату</span></h2>
 
-				<form action="#" class="form question__form">
+				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+					<?php the_content(); ?>
+				<?php endwhile; ?>
+				<?php endif; ?>
+
+<!-- 				<form action="#" class="form question__form">
 					<div class="question__form_input">
 
 						<div class="">
@@ -224,7 +203,7 @@
 					
 					<textarea cols="30" rows="10" placeholder="Ваше сообщение"></textarea>
 				</form>
-
+ -->
 			</div>
 		</section>
 		

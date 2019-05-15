@@ -82,76 +82,76 @@
 
 //     add_action('acf/init', 'my_acf_init');
 
-// //------------------пагинация----------------------
-//     function wptuts_pagination( $args = array() ) {
+//------------------пагинация----------------------
+    function wptuts_pagination( $args = array() ) {
         
-//         $defaults = array(
-//             'range'           => 4,
-//             'custom_query'    => FALSE,
-//             'previous_string' => __( '<', 'text-domain' ),
-//             'next_string'     => __( '>', 'text-domain' ),
-//             'before_output'   => '<nav class="navigation pagination">',
-//             'after_output'    => '</nav>'
-//         );
+        $defaults = array(
+            'range'           => 4,
+            'custom_query'    => FALSE,
+            'previous_string' => __( '<', 'text-domain' ),
+            'next_string'     => __( '>', 'text-domain' ),
+            'before_output'   => '<nav class="navigation pagination">',
+            'after_output'    => '</nav>'
+        );
         
-//         $args = wp_parse_args( 
-//             $args, 
-//             apply_filters( 'wp_bootstrap_pagination_defaults', $defaults )
-//         );
+        $args = wp_parse_args( 
+            $args, 
+            apply_filters( 'wp_bootstrap_pagination_defaults', $defaults )
+        );
         
-//         $args['range'] = (int) $args['range'] - 1;
-//         if ( !$args['custom_query'] )
-//             $args['custom_query'] = @$GLOBALS['wp_query'];
-//         $count = (int) $args['custom_query']->max_num_pages;
-//         $page  = intval( get_query_var( 'paged' ) );
-//         $ceil  = ceil( $args['range'] / 2 );
+        $args['range'] = (int) $args['range'] - 1;
+        if ( !$args['custom_query'] )
+            $args['custom_query'] = @$GLOBALS['wp_query'];
+        $count = (int) $args['custom_query']->max_num_pages;
+        $page  = intval( get_query_var( 'paged' ) );
+        $ceil  = ceil( $args['range'] / 2 );
         
-//         if ( $count <= 1 )
-//             return FALSE;
+        if ( $count <= 1 )
+            return FALSE;
         
-//         if ( !$page )
-//             $page = 1;
+        if ( !$page )
+            $page = 1;
         
-//         if ( $count > $args['range'] ) {
-//             if ( $page <= $args['range'] ) {
-//                 $min = 1;
-//                 $max = $args['range'] + 1;
-//             } elseif ( $page >= ($count - $ceil) ) {
-//                 $min = $count - $args['range'];
-//                 $max = $count;
-//             } elseif ( $page >= $args['range'] && $page < ($count - $ceil) ) {
-//                 $min = $page - $ceil;
-//                 $max = $page + $ceil;
-//             }
-//         } else {
-//             $min = 1;
-//             $max = $count;
-//         }
+        if ( $count > $args['range'] ) {
+            if ( $page <= $args['range'] ) {
+                $min = 1;
+                $max = $args['range'] + 1;
+            } elseif ( $page >= ($count - $ceil) ) {
+                $min = $count - $args['range'];
+                $max = $count;
+            } elseif ( $page >= $args['range'] && $page < ($count - $ceil) ) {
+                $min = $page - $ceil;
+                $max = $page + $ceil;
+            }
+        } else {
+            $min = 1;
+            $max = $count;
+        }
         
-//         $echo = '';
-//         $previous = intval($page) - 1;
-//         $previous = esc_attr( get_pagenum_link($previous) );
-//             if ( $previous && (1 != $page) )
-//             $echo .= '<a href="' . $previous . '" title="' . __( '', 'text-domain') . '">' . $args['previous_string'] . '</a>';
+        $echo = '';
+        $previous = intval($page) - 1;
+        $previous = esc_attr( get_pagenum_link($previous) );
+            if ( $previous && (1 != $page) )
+            $echo .= '<a href="' . $previous . '" title="' . __( '', 'text-domain') . '">' . $args['previous_string'] . '</a>';
         
-//         if ( !empty($min) && !empty($max) ) {
-//             for( $i = $min; $i <= $max; $i++ ) {
-//                 if ($page == $i) {
-//                     $echo .= '<span class="active">' . str_pad( (int)$i, 1, '0', STR_PAD_LEFT ) . '</span>';
-//                 } else {
-//                     $echo .= sprintf( '<a href="%s">%2d</a>', esc_attr( get_pagenum_link($i) ), $i );
-//                 }
-//             }
-//         }
+        if ( !empty($min) && !empty($max) ) {
+            for( $i = $min; $i <= $max; $i++ ) {
+                if ($page == $i) {
+                    $echo .= '<span class="active">' . str_pad( (int)$i, 1, '0', STR_PAD_LEFT ) . '</span>';
+                } else {
+                    $echo .= sprintf( '<a href="%s">%2d</a>', esc_attr( get_pagenum_link($i) ), $i );
+                }
+            }
+        }
         
-//         $next = intval($page) + 1;
-//         $next = esc_attr( get_pagenum_link($next) );
-//         if ($next && ($count != $page) )
-//             $echo .= '<a href="' . $next . '" title="' . __( '', 'text-domain') . '">' . $args['next_string'] . '</a>';
+        $next = intval($page) + 1;
+        $next = esc_attr( get_pagenum_link($next) );
+        if ($next && ($count != $page) )
+            $echo .= '<a href="' . $next . '" title="' . __( '', 'text-domain') . '">' . $args['next_string'] . '</a>';
         
-//         if ( isset($echo) )
-//             echo $args['before_output'] . $echo . $args['after_output'];
-//     }
+        if ( isset($echo) )
+            echo $args['before_output'] . $echo . $args['after_output'];
+    }
 
 //------------------Register Custom Post Статьи----------------------
     function article_post_type() {
@@ -217,3 +217,36 @@
         register_post_type( 'services', $args );
     }
     add_action( 'init', 'services_post_type', 0 );
+
+
+//------------------Register Custom Post Статьи----------------------
+    function question_post_type() {
+        $labels = array(
+            'name'                  => _x( 'Вопрос', 'Post Type General Name', 'text_domain' ),
+            'singular_name'         => _x( 'Вопрос', 'Post Type Singular Name', 'text_domain' ),
+            'menu_name'             => __( 'Вопрос', 'text_domain' ),
+            'all_items'             => __( 'Вопрос', 'text_domain' ),
+            'add_new_item'          => __( 'Добавить ответ', 'text_domain' ),
+            'add_new'               => __( 'Добавить ответ', 'text_domain' ),
+        );
+        $args = array(
+            'label'                 => __( 'Бренды', 'text_domain' ),
+            'labels'                => $labels,
+            'supports'              => array( 'title', 'editor', 'thumbnail'),// 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+            'hierarchical'          => false,
+            'public'                => true,
+            'show_ui'               => true,
+            'show_in_menu'          => true,
+            'menu_position'         => 4,
+            'menu_icon'             => 'dashicons-images-alt2',
+            'show_in_admin_bar'     => true,
+            'show_in_nav_menus'     => true,
+            'can_export'            => true,
+            'has_archive'           => true,
+            'exclude_from_search'   => false,
+            'publicly_queryable'    => true,
+            'capability_type'       => 'page',
+        );
+        register_post_type( 'question', $args );
+    }
+    add_action( 'init', 'question_post_type', 0 );

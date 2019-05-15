@@ -16,9 +16,9 @@
 				<nav class="nav">
 					<ul>
 						<li><a href="<?php echo get_home_url(); ?>">Главная</a></li>
-						<li class="click"><a href="#services">Услуги</a></li>
-						<li class="click"><a href="#about">Об адвокате</a></li>
-						<li class="click"><a href="#contacts">Контакти</a></li>
+						<li><a href="<?php echo get_home_url(); ?>#services">Услуги</a></li>
+						<li><a href="<?php echo get_home_url(); ?>#about">Об адвокате</a></li>
+						<li><a href="<?php echo get_home_url(); ?>#contacts">Контакти</a></li>
 						<li><a href="<?php echo get_home_url(); ?>/article/">Блог</a></li>
 					</ul>
 				</nav>

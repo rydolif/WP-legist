@@ -22,22 +22,28 @@
 	padding-bottom: 140px
 	background-color: #EBEBEB
 	overflow: visible
+
 	&__list
 		display: flex
 		flex-wrap: wrap
 
 	&__item
+		display: flex
+		flex-direction: column
+		justify-content: space-between
 		flex-basis: 25%
-		height: 582px
 		padding: 15px 15px 20px
 		text-align: right
 		position: relative
 		transition: all .6s
+
 		&_hidden
 			display: none
+
 		&:hover
 			z-index: 1
 			box-shadow: 3px 3px 15px #777
+
 			h4
 				color: $accent
 
@@ -48,8 +54,6 @@
 		&:nth-of-type(3),
 		&:nth-of-type(6),
 		&:nth-of-type(8),
-		&:nth-of-type(9),
-		&:nth-of-type(11)
 			background: #fff
 
 		img 
@@ -70,16 +74,13 @@
 			margin-bottom: 25px
 			text-align: left
 
-		span
-			position: absolute
+		time
 			font-size: 16px
-			bottom: 60px
-			right: 25px
+			margin-bottom: 20px
+			display: block
 
 		a
-			position: absolute
-			bottom: 20px
-			right: 10px
+			display: block
 			background: none
 			border: none
 			font-size: 16px
@@ -96,34 +97,34 @@
 				position: absolute
 				right: 0
 
-	&__more_open,
-	&__more_close
-		flex-basis: 100%
-		text-align: right
-		margin-left: auto
-		border: none
-		background: none
-		bottom: -70px
-		right: 40px
-		white-space: nowrap
-		font-size: 18px
-		color: $accent
-		text-decoration: underline
-		cursor: pointer
-		position: relative
-		&::after
-			content: ''
-			border: 12px solid transparent
-			position: absolute
-			right: -30px
+	// &__more_open,
+	// &__more_close
+	// 	flex-basis: 100%
+	// 	text-align: right
+	// 	margin-left: auto
+	// 	border: none
+	// 	background: none
+	// 	bottom: -70px
+	// 	right: 40px
+	// 	white-space: nowrap
+	// 	font-size: 18px
+	// 	color: $accent
+	// 	text-decoration: underline
+	// 	cursor: pointer
+	// 	position: relative
+	// 	&::after
+	// 		content: ''
+	// 		border: 12px solid transparent
+	// 		position: absolute
+	// 		right: -30px
 
-	&__more_open
-		&::after
-			border-top-color: $accent
-			top: 8px
+	// &__more_open
+	// 	&::after
+	// 		border-top-color: $accent
+	// 		top: 8px
 
-	&__more_close
-		display: none
-		&::after
-			border-bottom-color: $accent
-			top: -2px
+	// &__more_close
+	// 	display: none
+	// 	&::after
+	// 		border-bottom-color: $accent
+	// 		top: -2px
