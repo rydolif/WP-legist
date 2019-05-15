@@ -1,0 +1,129 @@
+.title
+	background: url(../img/articles/bg-articles.jpg) no-repeat
+	background-size: cover
+	&__selection
+		padding: 110px 40px 125px
+		background: $accent
+		width: 295px
+
+	h1
+		font-size: 42px
+		color: #fff
+		position: relative
+		&::after
+			content: ''
+			border: 20px solid transparent
+			border-top-color: #fff
+			position: absolute
+			right: 0
+			top: 20px
+
+.articles
+	padding-bottom: 140px
+	background-color: #EBEBEB
+	overflow: visible
+	&__list
+		display: flex
+		flex-wrap: wrap
+
+	&__item
+		flex-basis: 25%
+		height: 582px
+		padding: 15px 15px 20px
+		text-align: right
+		position: relative
+		transition: all .6s
+		&_hidden
+			display: none
+		&:hover
+			z-index: 1
+			box-shadow: 3px 3px 15px #777
+			h4
+				color: $accent
+
+			a
+				opacity: 1
+
+		&:nth-of-type(1),
+		&:nth-of-type(3),
+		&:nth-of-type(6),
+		&:nth-of-type(8),
+		&:nth-of-type(9),
+		&:nth-of-type(11)
+			background: #fff
+
+		img 
+			margin-bottom: 20px
+			width: 100%
+
+		h4
+			font-size: 18px
+			text-indent: 20px
+			margin-bottom: 20px
+			text-align: left
+			padding: 0 5px
+		
+		p
+			font-size: 16px
+			line-height: 1.2
+			text-indent: 20px
+			margin-bottom: 25px
+			text-align: left
+
+		span
+			position: absolute
+			font-size: 16px
+			bottom: 60px
+			right: 25px
+
+		a
+			position: absolute
+			bottom: 20px
+			right: 10px
+			background: none
+			border: none
+			font-size: 16px
+			color: $accent
+			text-decoration: underline
+			padding-right: 50px
+			opacity: 0
+			cursor: pointer
+			transition: .6s
+			&::after
+				content: ''
+				border: 10px solid transparent
+				border-left-color: $accent
+				position: absolute
+				right: 0
+
+	&__more_open,
+	&__more_close
+		flex-basis: 100%
+		text-align: right
+		margin-left: auto
+		border: none
+		background: none
+		bottom: -70px
+		right: 40px
+		white-space: nowrap
+		font-size: 18px
+		color: $accent
+		text-decoration: underline
+		cursor: pointer
+		position: relative
+		&::after
+			content: ''
+			border: 12px solid transparent
+			position: absolute
+			right: -30px
+
+	&__more_open
+		&::after
+			border-top-color: $accent
+			top: 8px
+
+	&__more_close
+		display: none
+		&::after
+			border-bottom-color: $accent
+			top: -2px

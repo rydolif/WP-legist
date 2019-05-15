@@ -1,0 +1,48 @@
+.form
+	display: flex
+	justify-content: space-between
+	textarea
+		flex-basis: 60%
+		margin-right: 40px
+		padding-top: 10px
+		height: 190px
+
+	input,
+	textarea
+		background-color: transparent
+		border: 1px solid #fff
+		color: #fff
+		padding-left: 15px
+		font-size: 20px
+
+	.btn
+		width: 100%
+
+	label.error
+		position: absolute
+		bottom: -25px
+		right: 25px
+		left: 25px
+		transition: all .3s
+		animation: error .3s linear 1 forwards
+		color: #fff
+		text-align: center
+		font-weight: 600
+		background-color: $accent
+		border-radius: 10px
+		&::before
+			content: ''
+			position: absolute
+			left: 50%
+			top: -8px
+			margin-left: -2px
+			border-bottom: 4px solid $accent
+			border-left: 4px solid transparent
+			border-right: 4px solid transparent
+			border-top: 4px solid transparent
+
+	div
+		position: relative
+		margin-bottom: 22px
+		&:last-child
+			margin-bottom: 0
