@@ -101,7 +101,7 @@
 						while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
 
 						<div class="answers__item">
-							<h5>Елена Иванова, 
+							<h5>	<?php the_title(); ?>, 
 								<time datetime="1969-07-16">
 									<?php echo get_the_date('Y-m-d'); ?>
 								</time>
