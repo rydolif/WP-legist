@@ -95,80 +95,36 @@
 				</div>
 
 				<div class="answers__list">
+					<?php // Display blog posts on any page @ http://m0n.co/l
+						$temp = $wp_query; $wp_query= null;
+						$wp_query = new WP_Query(); $wp_query->query('showposts=-1' . '&paged='.$paged);
+						while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
 
+						<div class="answers__item">
+							<h5>Елена Иванова, 
+								<time datetime="1969-07-16">
+									<?php echo get_the_date('Y-m-d'); ?>
+								</time>
+							</h5>
 
-					<div class="answers__item">
-						<h5>Елена Иванова, 24/09/2019</h5>
+							<?php the_content(); ?>
 
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut natus deleniti non dolore excepturi animi porro quam, vitae eos tenetur. Ut natus deleniti non dolore excepturi animi porro quam, vitae eos tenetur?</p>
+							<div class="answers__dropdown">
+								<h5>Отвечает адвокат<span>Тюрина Дина Игоревна</span></h5>
+								<p><?php the_field('answer'); ?></p>
+							</div>
 
-						<div class="answers__dropdown">
-							<h5>Отвечает адвокат<span>Тюрина Дина Игоревна</span></h5>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi eaque quaerat voluptatum rerum sed, totam aliquam fuga atque ducimus ea. Modi eaque quaerat voluptatum rerum sed, totam aliquam fuga atque ducimus ea.</p>
+							<div class="answers__dropdown_open-close"></div>
+
 						</div>
 
-						<div class="answers__dropdown_open-close"></div>
 
-					</div>
+						<?php endwhile; ?>
 
-<!-- 					<div class="answers__item">
-						<h5>Елена Иванова, 24/09/2019</h5>
-
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut natus deleniti non dolore excepturi animi porro quam, vitae eos tenetur. Ut natus deleniti non dolore excepturi animi porro quam, vitae eos tenetur?</p>
-
-						<div class="answers__dropdown">
-							<h5>Отвечает адвокат<span>Тюрина Дина Игоревна</span></h5>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi eaque quaerat voluptatum rerum sed, totam aliquam fuga atque ducimus ea. Modi eaque quaerat voluptatum rerum sed, totam aliquam fuga atque ducimus ea.</p>
-						</div>
-
-						<div class="answers__dropdown_open-close"></div>
-
-					</div>
-
-					<div class="answers__item">
-						<h5>Елена Иванова, 24/09/2019</h5>
-
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut natus deleniti non dolore excepturi animi porro quam, vitae eos tenetur. Ut natus deleniti non dolore excepturi animi porro quam, vitae eos tenetur?</p>
-
-						<div class="answers__dropdown">
-							<h5>Отвечает адвокат<span>Тюрина Дина Игоревна</span></h5>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi eaque quaerat voluptatum rerum sed, totam aliquam fuga atque ducimus ea. Modi eaque quaerat voluptatum rerum sed, totam aliquam fuga atque ducimus ea.</p>
-						</div>
-
-						<div class="answers__dropdown_open-close"></div>
-
-					</div>
-
-					<div class="answers__item">
-						<h5>Елена Иванова, 24/09/2019</h5>
-
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut natus deleniti non dolore excepturi animi porro quam, vitae eos tenetur. Ut natus deleniti non dolore excepturi animi porro quam, vitae eos tenetur?</p>
-
-						<div class="answers__dropdown">
-							<h5>Отвечает адвокат<span>Тюрина Дина Игоревна</span></h5>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi eaque quaerat voluptatum rerum sed, totam aliquam fuga atque ducimus ea. Modi eaque quaerat voluptatum rerum sed, totam aliquam fuga atque ducimus ea.</p>
-						</div>
-
-						<div class="answers__dropdown_open-close"></div>
-
-					</div>
-
-					<div class="answers__item answers__item_hidden">
-						<h5>Елена Иванова, 24/09/2019</h5>
-
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut natus deleniti non dolore excepturi animi porro quam, vitae eos tenetur. Ut natus deleniti non dolore excepturi animi porro quam, vitae eos tenetur?</p>
-
-						<div class="answers__dropdown">
-							<h5>Отвечает адвокат<span>Тюрина Дина Игоревна</span></h5>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi eaque quaerat voluptatum rerum sed, totam aliquam fuga atque ducimus ea. Modi eaque quaerat voluptatum rerum sed, totam aliquam fuga atque ducimus ea.</p>
-						</div>
-
-						<div class="answers__dropdown_open-close"></div>
-
-					</div>
-
+					<?php wp_reset_postdata(); ?>
+					
 					<button class="answers__more_open">Больше вопросов</button>
-					<button class="answers__more_close">Свернуть</button> -->
+					<button class="answers__more_close">Свернуть</button>
 
 				</div>
 
@@ -180,30 +136,8 @@
 				
 				<h2>Задать вопрос <span>адвокату</span></h2>
 
-				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-					<?php the_content(); ?>
-				<?php endwhile; ?>
-				<?php endif; ?>
+				<?php if (function_exists('user_submitted_posts')) user_submitted_posts(); ?>
 
-<!-- 				<form action="#" class="form question__form">
-					<div class="question__form_input">
-
-						<div class="">
-							<input type="text" name="name" placeholder="Ваше имя" required>
-						</div>
-
-						<div class="">
-							<input type="tel" name="phone" required placeholder="Ваш телефон">
-						</div>
-
-						<div class="">
-							<button type="submit" class="btn" name="submit">Отправить</button>
-						</div>
-					</div>
-					
-					<textarea cols="30" rows="10" placeholder="Ваше сообщение"></textarea>
-				</form>
- -->
 			</div>
 		</section>
 		

@@ -2,6 +2,76 @@
 @import "base"
 
 
+.answers__item
+	&:nth-child(n+5)
+		display: none
+
+
+
+.usp-email
+	margin-bottom: 20px !important
+
+input,
+textarea
+	border: 1px solid #fff !important
+	font-family: Merriweather,sans-serif
+	width: 100% !important
+	background-color: transparent !important
+	padding: 0 20px
+	color: #fff
+
+textarea
+	padding: 10px 20px !important
+
+
+fieldset
+	label
+		display: none !important
+
+#usp-submit
+	input
+		position: relative
+		display: inline-block
+		height: 50px
+		border: 1px solid #c9325b !important
+		outline: 0
+		padding: 0 30px
+		width: 290px
+		background: #c9325b !important
+		text-align: center
+		font-size: 18px
+		color: #fff
+		line-height: 50px
+		font-weight: 700
+		letter-spacing: .2px
+		cursor: pointer
+		transition: all .6s
+
+		&:hover,
+		&:focus
+			background-color: transparent !important
+
+div#user-submitted-posts
+	width: 100%
+	max-width: 100% !important
+
+.question__wrap
+	display: flex
+	justify-content: space-between
+	width: 100%
+	margin: 0 !important
+	padding: 0 !important
+
+	&_input
+		width: 35% !important
+		margin-left: 3% !important
+	
+	&_textarea
+		width: 60% !important
+ 
+		textarea
+			width: 100% !important
+			height: 190px !important
 
 .pagination
 	display: flex

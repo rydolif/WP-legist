@@ -1,6 +1,8 @@
 
 <?php get_header(); ?>
 
+	<?php get_template_part( 'parts/top-line' ); ?>
+
 	<?php get_template_part( 'parts/header' ); ?>
 
 	<div class="bg--hero"></div>
@@ -14,16 +16,12 @@
 		<img src="<?php echo get_template_directory_uri(); ?>/assets/img/percent.png" alt="" class="parallax parallax--num-left">
 
 		<div class="container">
-			<div class="row">
-				<div class="offset-xl-2 col-xl-4 col-lg-6">
+			<div class="row justify-content-center">
+				<div class="col-md-8">
 
-					<p class="hero__sub-title"><b>Нет такой страницы</b></p>
+					<h1>Нет такой страницы</h1>
 
-					<div class="hero__logo">
-						<svg><use xlink:href="/wp-content/plugins/svg-spritemap/defs.svg#:logo"></svg>
-					</div>
-
-					<a href="<?php echo get_home_url(); ?>" class="btn hero__btn">Вернутся на главную<span><svg><use xlink:href="/wp-content/plugins/svg-spritemap/defs.svg#:arrow"></use></svg></span></a>
+					<a href="<?php echo get_home_url(); ?>" class="btn hero__btn">Вернутся на главную</a>
 
 				</div>
 
